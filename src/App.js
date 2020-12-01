@@ -8,6 +8,7 @@ class App extends React.Component {
     super();
     this.state = {
       background: 'white',
+      textColor:'black',
       users: []
     };
   }
@@ -59,13 +60,19 @@ class App extends React.Component {
     });
   }
 
+  changeTextColor(event){
+    this.setState({ textColor:event.target.value});
+  }
+
   render() {
     return(
-      <div className="app" style={{background: this.state.background}}>
+      <div className="app" style={{background: this.state.background, color: this.state.textColor}}>
         <h1>Admin panel - Proiectul 1</h1>
         <UserAddForm submitAddForm={(event, name, email, isGoldClient, image, salary) => this.submitAddForm(event, name, email, isGoldClient,image,salary)}/>
         <UserList users={this.state.users}/>
         <input type="color" onChange={(event) => this.changeColor(event)}/>
+        <input type="color" onChange={(event) => this.changeTextColor(event)}/>
+
       </div>
     );
   }
