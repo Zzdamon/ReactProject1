@@ -6,7 +6,9 @@ class UserAddForm extends React.Component {
         this.state = {
             name: '',
             email: '',
-            isGoldClient: false
+            isGoldClient: false,
+            image:'',
+            salary:0
         };
     }
 

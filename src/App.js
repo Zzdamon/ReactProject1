@@ -19,6 +19,8 @@ class App extends React.Component {
         data = data.filter(user => user.id < 4);
         data.forEach(user => {
           user.isGoldClient = false;
+          user.image="https://upload.wikimedia.org/wikipedia/en/thumb/7/72/Avatar_icon_green.svg/1024px-Avatar_icon_green.svg.png";
+          user.salary=0;
         });
         this.setState({users: data});
       })
@@ -61,7 +63,7 @@ class App extends React.Component {
     return(
       <div className="app" style={{background: this.state.background}}>
         <h1>Admin panel - Proiectul 1</h1>
-        <UserAddForm submitAddForm={(event, name, email, isGoldClient) => this.submitAddForm(event, name, email, isGoldClient)}/>
+        <UserAddForm submitAddForm={(event, name, email, isGoldClient, image, salary) => this.submitAddForm(event, name, email, isGoldClient,image,salary)}/>
         <UserList users={this.state.users}/>
         <input type="color" onChange={(event) => this.changeColor(event)}/>
       </div>

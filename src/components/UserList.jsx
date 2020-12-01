@@ -13,6 +13,8 @@ function UserList(props) {
                     name={ user.name }
                     email={ user.email }
                     isGoldClient={ user.isGoldClient }
+                    image={user.image}
+                    salary={user.salary}
                     key={ index }
                 />
             })}
