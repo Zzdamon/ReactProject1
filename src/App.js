@@ -2,14 +2,15 @@ import React from 'react';
 import UserList from './components/UserList';
 import UserAddForm from './components/UserAddForm';
 import './App.css';
-
+import PostList from './components/PostList';
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
       background: 'white',
       textColor:'black',
-      users: []
+      users: [],
+      showList: "users"
     };
   }
 
@@ -43,7 +44,7 @@ class App extends React.Component {
     return maxId;
   }
 
-  submitAddForm(event, name, email, isGoldClient) {
+  submitAddForm(event, name, email, isGoldClient,image,salary) {
     event.preventDefault();
     this.setState(prevState => {
       return {
@@ -53,7 +54,9 @@ class App extends React.Component {
             id: this.getMaxId(prevState.users) + 1,
             name,
             email,
-            isGoldClient
+            isGoldClient,
+            image,
+            salary
           }
         ]
       }
@@ -64,12 +67,29 @@ class App extends React.Component {
     this.setState({ textColor:event.target.value});
   }
 
+  showUsers(event){
+    this.setState({showList:"users"})
+  }
+  showPosts(event){
+    this.setState({showList:"posts"})
+  }
+
   render() {
     return(
       <div className="app" style={{background: this.state.background, color: this.state.textColor}}>
         <h1>Admin panel - Proiectul 1</h1>
         <UserAddForm submitAddForm={(event, name, email, isGoldClient, image, salary) => this.submitAddForm(event, name, email, isGoldClient,image,salary)}/>
-        <UserList users={this.state.users}/>
+        { this.state.showList=== "users"?
+                 <UserList users={this.state.users}/>:
+              null
+        }
+        {
+          this.state.showList=== "posts"?
+          <PostList />:
+          null
+        }
+        <button onClick={(event)=>this.showUsers(event)}>Show Users</button>
+        <button onClick={(event)=>this.showPosts(event)}>Show Posts</button>
         <input type="color" onChange={(event) => this.changeColor(event)}/>
         <input type="color" onChange={(event) => this.changeTextColor(event)}/>
 

@@ -24,13 +24,21 @@ class UserAddForm extends React.Component {
         this.setState({isGoldClient: event.target.checked});
     }
 
+    updateSalary(event) {
+        this.setState({salary: event.target.value});
+    }
+    
+    updateImage(event) {
+        this.setState({image: event.target.value});
+    }
+
     render() {
-        const {name, email, isGoldClient} = this.state;
+        const {name, email, isGoldClient, image,salary} = this.state;
 
         return (
             <form
                 className="user-add-form"
-                onSubmit={(event) => this.props.submitAddForm(event, name, email, isGoldClient)}
+                onSubmit={(event) => this.props.submitAddForm(event, name, email, isGoldClient,image,salary)}
             >
                 <h2>Adauga utilizatori:</h2>
                 <label htmlFor="name">Nume:</label>
@@ -53,6 +61,20 @@ class UserAddForm extends React.Component {
                     onChange={(event) => this.updateIsGoldClient(event)}
                 />
 
+                <label htmlFor="image">Image:</label>
+                <input
+                    type="text"
+                    name="image"
+                    onChange={(event) => this.updateImage(event)}
+                />
+
+
+                <label htmlFor="salary">Salary:</label>
+                <input
+                    type="number"
+                    name="salary"
+                    onChange={(event) => this.updateSalary(event)}
+                />
                 <input type="submit" value="Introdu utilizatorul"/>
             </form>
         )
