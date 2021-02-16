@@ -1,4 +1,12 @@
 .user-item img{
-    height: 9vh;
+    height: 10rem;
     width: auto;
+    border: 0.14rem;
+    border-style: solid;
+}
+
+.user-item{
+    margin: 1.2rem;
+    display: flex;
+    flex-direction: column;
 }

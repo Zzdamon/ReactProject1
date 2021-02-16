@@ -1,0 +1,12 @@
+.users{
+    display: flex;
+    flex-wrap: wrap;
+    
+    /* flex-direction: row; */
+    
+}
+.user-list{
+    display: flex;
+    flex-direction: column;
+    margin: 1.2rem;
+}

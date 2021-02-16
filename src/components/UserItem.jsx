@@ -14,6 +14,7 @@ function UserItem(props) {
                 : null
             }
             <p>Salary: {salary} $</p>
+            <button onClick={()=>props.deleteUser(props.id)}>Delete</button>
 
         </div>
     );

@@ -5,6 +5,8 @@ h2 {
 .user-add-form {
     display: flex;
     flex-direction: column;
+    /* justify-content: center; */
+    padding: 1.2rem;
 }
 
 .user-add-form input {
